@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab - Dashboard Utama</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-image: url('./assets/images/images.jpg');
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .time-weather-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+        .clock {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+        .weather {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .weather i {
+            font-size: 2rem;
+        }
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        .search-box {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .search-box:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 1.2rem;
+        }
+        .bookmarks {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+        }
+        .bookmark-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .bookmark-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        .bookmark-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        .bookmark-item:hover .bookmark-icon {
+            transform: scale(1.1);
+        }
+        .bookmark-title {
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        @media (max-width: 768px) {
+            body {
+                background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+            .bookmarks {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .time-weather-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .weather {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="time-weather-container">
+            <div class="clock" id="clock"></div>
+            <div class="weather" id="weather">
+                <i id="weatherIcon"></i>
+                <span id="weatherText"></span>
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchBox" placeholder="Mau cari apa hari ini tuan ?" autocomplete="off">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+        <div class="bookmarks">
+            <div class="bookmark-item" data-url="https://mail.google.com">
+                <div class="bookmark-icon"><i class="fab fa-google"></i></div>
+                <div class="bookmark-title">Gmail</div>
+            </div>
+            <div class="bookmark-item" data-url="https://www.youtube.com">
+                <div class="bookmark-icon"><i class="fab fa-youtube"></i></div>
+                <div class="bookmark-title">YouTube</div>
+            </div>
+            <div class="bookmark-item" data-url="https://drive.google.com">
+                <div class="bookmark-icon"><i class="fab fa-google-drive"></i></div>
+                <div class="bookmark-title">Drive</div>
+            </div>
+            <div class="bookmark-item" data-url="https://keep.google.com">
+                <div class="bookmark-icon"><i class="fas fa-sticky-note"></i></div>
+                <div class="bookmark-title">Notes</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
